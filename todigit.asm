@@ -12,13 +12,13 @@ MAIN PROC               ; Begin the main procedure
     MOV DS, AX          ; the Data Segment. 
 
     PUSH num            ; Push the 2 digit number onto the stack
-    CALL PRINTNUM       ; Print the number we pushed to the stack
+    CALL PRINT_2_DIGITS ; Print the number we pushed to the stack
 
     MOV AH, 4Ch         ; The value "4Ch" in the AH register signifies to the
     INT 21h             ; interupt request that we would like to exit DOS
 MAIN ENDP               ; End the main procedure
 
-PRINTNUM PROC
+PRINT_2_DIGITS PROC     ; Begin the PRINT_2_DIGITS procedure
     POP DX              ; Pop the return address (IP) from the stack into DX
     POP AX              ; Pop the 2 digit number from the stack into AX
     PUSH DX             ; Push the return address back onto the stack
@@ -44,5 +44,5 @@ PRINTNUM PROC
     INT 21H             ; character. We then call the interupt request.
 
     RET                 ; Return from the procedure to the address pointer
-PRINTNUM ENDP
-END MAIN
+PRINT_2_DIGITS ENDP     ; Ends the PRINT_2_DIGITS procedure
+END MAIN                ; Ends the program
